@@ -70,8 +70,9 @@ Si se regenera la carpeta android, volver a agregarlo.
    ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
 5. ✅ CI (GitHub Actions) · ✅ repo en GitHub · ✅ Sentry (`src/lib/sentry.ts`, init en
    main.tsx + ErrorBoundary; solo reporta en PROD/APK). DSN overrideable con VITE_SENTRY_DSN.
-6. ✅ Liquidación FEFO: lógica pura (`liquidacion.ts`) + chip en StockPage (vista por
-   lote) + sugerencia en LotePage (detalle, al editar). Descuentos configurables a futuro.
+6. ✅ Liquidación FEFO: lógica pura (`liquidacion.ts`) + chip en StockPage + sugerencia en
+   LotePage + ✅ descuentos % configurables desde Ajustes (settings desc-critico/urgente/aviso,
+   getters DESC_* y descuentoConfig() en StoreContext).
    ⏳ Push notifications reales (FCM) → requiere proyecto Firebase + config nativa.
 7. (Mercado Pago / cobro: lo ÚLTIMO de todo)
 
