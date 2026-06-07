@@ -52,7 +52,8 @@ Comparte el proyecto Supabase con la app de ventas.
    ⏳ PENDIENTE 3d: descuento de stock por DELTA atómico (hoy upsert pisa cantidad).
    Requiere RPC transaccional compartida con ventas → hacerlo junto al refactor de ventas.
 4. ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
-5. ✅ CI (GitHub Actions: typecheck+test+build). ⏳ Sentry (falta DSN del usuario) · ⏳ subir a GitHub
+5. ✅ CI (GitHub Actions) · ✅ repo en GitHub · ✅ Sentry (`src/lib/sentry.ts`, init en
+   main.tsx + ErrorBoundary; solo reporta en PROD/APK). DSN overrideable con VITE_SENTRY_DSN.
 6. ✅ Liquidación FEFO: lógica pura (`liquidacion.ts`) + chip en StockPage (vista por
    lote) + sugerencia en LotePage (detalle, al editar). Descuentos configurables a futuro.
    ⏳ Push notifications reales (FCM) → requiere proyecto Firebase + config nativa.
