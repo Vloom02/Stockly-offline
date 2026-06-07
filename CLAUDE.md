@@ -53,7 +53,8 @@ Comparte el proyecto Supabase con la app de ventas.
    Requiere RPC transaccional compartida con ventas → hacerlo junto al refactor de ventas.
 4. ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
 5. ✅ CI (GitHub Actions: typecheck+test+build). ⏳ Sentry (falta DSN del usuario) · ⏳ subir a GitHub
-6. 🟡 Liquidación FEFO: ✅ lógica pura (`liquidacion.ts`). ⏳ integrarla en la UI.
+6. 🟡 Liquidación FEFO: ✅ lógica pura (`liquidacion.ts`) + ✅ chip de sugerencia en
+   StockPage (vista por lote). ⏳ falta en LotePage (detalle) para fijar el precio.
    ⏳ Push notifications reales (FCM) → requiere proyecto Firebase + config nativa.
 7. (Mercado Pago / cobro: lo ÚLTIMO de todo)
 
