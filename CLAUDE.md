@@ -19,6 +19,19 @@ Comparte el proyecto Supabase con la app de ventas.
 - `npm run build` — tsc + vite build
 - `/apk` — generar APK Android (build → cap sync → abrir Android Studio)
 
+## Compilar el APK desde consola (sin abrir Android Studio)
+- El `java` del sistema es la v26 (incompatible con Gradle). Usar el JDK de Android Studio:
+  `JAVA_HOME = C:\Program Files\Android\Android Studio\jbr` (JDK 21).
+- Pasos: `npm run build` → `npx cap sync android` → en `android/`: `.\gradlew.bat assembleDebug --no-daemon`.
+- APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`.
+
+## ⚠️ Android: permiso de CÁMARA (escáner)
+`android/` está en `.gitignore`. El `AndroidManifest.xml` DEBE incluir, además de INTERNET:
+`<uses-permission android:name="android.permission.CAMERA" />` y
+`<uses-feature android:name="android.hardware.camera" android:required="false" />`.
+Sin eso, el escáner da "Permiso de cámara denegado" (Android ni muestra el cartel).
+Si se regenera la carpeta android, volver a agregarlo.
+
 ## Arquitectura de datos
 - Tablas: `comercios`, `miembros` (rol dueno|empleado), `sucursales`, `productos`
   (catálogo compartido por comercio), `lotes` (stock real + vencimiento por sucursal),
