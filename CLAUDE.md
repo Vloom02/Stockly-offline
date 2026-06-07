@@ -47,12 +47,18 @@ Comparte el proyecto Supabase con la app de ventas.
 
 ## Roadmap (orden acordado)
 1. ✅ Tipos generados desde Supabase (`src/types/database.types.ts`)
-2. ✅ Tests (Vitest): lógica pura en `src/lib/vencimientos.ts` + `plan.ts` (17 tests). `npm test`
-3. ⏳ Arreglar sync (updated_at + incremental + guarda anti-solapamiento + delta de stock) ← SIGUIENTE
-4. Migrar IndexedDB → Dexie / fetching → TanStack Query
-5. Sentry + CI (GitHub Actions)
-6. Funcionalidades: liquidación automática FEFO, push notifications reales (FCM)
+2. ✅ Tests (Vitest): `vencimientos.ts` + `plan.ts` + `liquidacion.ts` (27 tests). `npm test`
+3. 🟡 Sync: ✅ updated_at + pull incremental + guarda anti-solapamiento.
+   ⏳ PENDIENTE 3d: descuento de stock por DELTA atómico (hoy upsert pisa cantidad).
+   Requiere RPC transaccional compartida con ventas → hacerlo junto al refactor de ventas.
+4. ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
+5. ✅ CI (GitHub Actions: typecheck+test+build). ⏳ Sentry (falta DSN del usuario) · ⏳ subir a GitHub
+6. 🟡 Liquidación FEFO: ✅ lógica pura (`liquidacion.ts`). ⏳ integrarla en la UI.
+   ⏳ Push notifications reales (FCM) → requiere proyecto Firebase + config nativa.
 7. (Mercado Pago / cobro: lo ÚLTIMO de todo)
+
+## Estado git
+- Repo inicializado (rama `main`), commit inicial. Falta crear el repo remoto en GitHub y `git push`.
 
 ## Testing
 - `npm test` (vitest run) · `npm run test:watch`
