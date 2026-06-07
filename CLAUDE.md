@@ -51,7 +51,10 @@ Comparte el proyecto Supabase con la app de ventas.
 3. 🟡 Sync: ✅ updated_at + pull incremental + guarda anti-solapamiento.
    ⏳ PENDIENTE 3d: descuento de stock por DELTA atómico (hoy upsert pisa cantidad).
    Requiere RPC transaccional compartida con ventas → hacerlo junto al refactor de ventas.
-4. ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
+4. 🟡 Performance/refactor:
+   ✅ Code-splitting: páginas con React.lazy + Suspense, vendors en chunks (vite manualChunks).
+      Bundle propio 1375→~230 KB; Ionic/Supabase/Sentry/React separados y cacheados.
+   ⏳ Migrar IndexedDB → Dexie / fetching → TanStack Query (refactor grande, REQUIERE probar en la app)
 5. ✅ CI (GitHub Actions) · ✅ repo en GitHub · ✅ Sentry (`src/lib/sentry.ts`, init en
    main.tsx + ErrorBoundary; solo reporta en PROD/APK). DSN overrideable con VITE_SENTRY_DSN.
 6. ✅ Liquidación FEFO: lógica pura (`liquidacion.ts`) + chip en StockPage (vista por
