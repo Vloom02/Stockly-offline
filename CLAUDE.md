@@ -58,7 +58,9 @@ Comparte el proyecto Supabase con la app de ventas.
 7. (Mercado Pago / cobro: lo ÚLTIMO de todo)
 
 ## Estado git
-- Repo inicializado (rama `main`), commit inicial. Falta crear el repo remoto en GitHub y `git push`.
+- Repo: **https://github.com/Vloom02/Stockly-offline** (privado, rama `main`).
+- CI de GitHub Actions corriendo y en verde (typecheck + tests + build).
+- Para subir cambios: `git push`. `gh` está instalado y logueado (cuenta Vloom02).
 
 ## Testing
 - `npm test` (vitest run) · `npm run test:watch`
