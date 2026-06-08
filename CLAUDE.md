@@ -48,6 +48,14 @@ Si se regenera la carpeta android, volver a agregarlo.
 - Nunca tocar `.env` (bloqueado por permisos).
 - Subagentes disponibles: `revisor-sync`, `revisor-rls`, `revisor-ionic`, `escritor-tests`.
 
+## Code review aplicado (2026-06)
+- Doble-venta (F-A) cerrado: ventaId único online/offline.
+- RPC `registrar_venta`/`ajustar_stock`: validan sucursal/productos del comercio; ajustar_stock
+  deriva producto/sucursal del lote. Policy `comercios` UPDATE solo dueño + WITH CHECK.
+  `ventas_items/deudas` y `push_tokens` con WITH CHECK reforzado.
+- Outbox (ambas apps): **nunca descarta** un cambio no confirmado. Error permanente → cuarentena;
+  transitorio → reintenta (hasta 50). UI de "Reintentar no sincronizados" en ConfigPage de Stockly.
+
 ## ⚠️ Deuda técnica conocida (auditada 2026-06) — pendiente de arreglar
 1. **Sync sin `updated_at` real** → el merge es "el último que sincroniza gana", un device
    con datos viejos pisa datos nuevos. Falta columna `updated_at` + comparación.
