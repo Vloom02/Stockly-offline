@@ -73,7 +73,11 @@ Si se regenera la carpeta android, volver a agregarlo.
 6. ✅ Liquidación FEFO: lógica pura (`liquidacion.ts`) + chip en StockPage + sugerencia en
    LotePage + ✅ descuentos % configurables desde Ajustes (settings desc-critico/urgente/aviso,
    getters DESC_* y descuentoConfig() en StoreContext).
-   ⏳ Push notifications reales (FCM) → requiere proyecto Firebase + config nativa.
+   🟡 Push (FCM): ✅ proyecto Firebase (stockly-1598d) + google-services.json en android/app/
+      + plugin @capacitor/push-notifications + registro de token (src/lib/push.ts, tabla
+      push_tokens con RLS). El APK compila con Firebase.
+      ⏳ FALTA el lado ENVÍO: Edge Function que mande avisos de vencimiento a los tokens
+      (necesita service account key de Firebase + pg_cron diario).
 7. (Mercado Pago / cobro: lo ÚLTIMO de todo)
 
 ## Estado git
