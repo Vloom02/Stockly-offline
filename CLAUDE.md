@@ -61,9 +61,12 @@ Si se regenera la carpeta android, volver a agregarlo.
 ## Roadmap (orden acordado)
 1. ✅ Tipos generados desde Supabase (`src/types/database.types.ts`)
 2. ✅ Tests (Vitest): `vencimientos.ts` + `plan.ts` + `liquidacion.ts` (27 tests). `npm test`
-3. 🟡 Sync: ✅ updated_at + pull incremental + guarda anti-solapamiento.
-   ⏳ PENDIENTE 3d: descuento de stock por DELTA atómico (hoy upsert pisa cantidad).
-   Requiere RPC transaccional compartida con ventas → hacerlo junto al refactor de ventas.
+3. ✅ Sync: updated_at + pull incremental + guarda anti-solapamiento.
+   ✅ 3d (stock atómico): RPC `registrar_venta` en Supabase (FEFO con FOR UPDATE, idempotente)
+   probada. La app de ventas (almacen-ventas-final) ya la usa online y offline.
+   Nota residual: Stockly al EDITAR un lote sigue haciendo upsert con cantidad absoluta;
+   con pull incremental el riesgo bajó, pero idealmente Stockly debería tocar cantidad por
+   delta/RPC también (pendiente menor).
 4. 🟡 Performance/refactor:
    ✅ Code-splitting: páginas con React.lazy + Suspense, vendors en chunks (vite manualChunks).
       Bundle propio 1375→~230 KB; Ionic/Supabase/Sentry/React separados y cacheados.
